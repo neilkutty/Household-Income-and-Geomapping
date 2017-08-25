@@ -64,6 +64,20 @@ type.stats = hhgeo.small %>%
 
 # Plot State-grouped 
 
-ggplot(data = state.stats, aes(x=reorder(State_Name,Num_Households), y=Num_Households, fill=Avg_Median)) +
+p1 = ggplot(data = state.stats, aes(x=reorder(State_Name,Num_Households), y=Num_Households, fill=Avg_Median)) +
     geom_bar(stat='identity') +
     coord_flip()
+
+
+p2 = ggplot(data = county.stats, aes(x=reorder(County,Num_Households), y=Num_Households, fill=Avg_Median)) +
+    geom_bar(stat='identity') +
+    coord_flip()
+    
+p3 =  ggplot(data = type.stats, aes(x=reorder(Type,Num_Households), y=Num_Households, fill=Avg_Median)) +
+    geom_bar(stat='identity') +
+    coord_flip()
+
+multiplot(p1,p3)
+# p4 =  ggplot(data = type.stats, aes(x=reorder(Type,Num_Households), y=Num_Households, fill=Avg_Median)) +
+#     geom_bar(stat='identity') +
+#     coord_flip()
